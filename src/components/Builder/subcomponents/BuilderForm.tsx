@@ -9,9 +9,10 @@ import Teams from './Teams';
 interface BuilderFormProps {
   onCreate: (teams: { team1?: Player[]; team2?: Player[] }) => void;
   players: Player[];
+  onRemovePlayer: (playerName: string) => void;
 }
 
-const BuilderForm: React.FC<BuilderFormProps> = ({ onCreate, players }) => {
+const BuilderForm: React.FC<BuilderFormProps> = ({ onCreate, players, onRemovePlayer }) => {
   const [teams, setTeams] = useState<{ team1: Player[]; team2: Player[] } | null>(null);
   const isDisabled = players.length < 16;
 
@@ -19,7 +20,7 @@ const BuilderForm: React.FC<BuilderFormProps> = ({ onCreate, players }) => {
     e.preventDefault();
     const teams = CreateTeams(players);
     setTeams(teams);
-  
+
     if (onCreate) onCreate(teams);
   };
 
@@ -32,6 +33,7 @@ const BuilderForm: React.FC<BuilderFormProps> = ({ onCreate, players }) => {
               <Table.ColumnHeaderCell>Nombre</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell className="text-right">POS</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell className="text-right">PTS</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell className="text-right">Acciones</Table.ColumnHeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -40,6 +42,15 @@ const BuilderForm: React.FC<BuilderFormProps> = ({ onCreate, players }) => {
                 <Table.Cell>{name}</Table.Cell>
                 <Table.Cell className="text-right">{position}</Table.Cell>
                 <Table.Cell className="text-right">{score}</Table.Cell>
+                <Table.Cell className="text-right">
+                  <Button 
+                    variant="ghost"
+                    color="crimson"
+                    onClick={() => onRemovePlayer(name)}
+                  >
+                    Eliminar
+                  </Button>
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

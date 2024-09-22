@@ -1,4 +1,4 @@
-"use client"; // Asegúrate de que este componente se ejecute en el cliente
+"use client"; 
 
 import React, { useState } from 'react';
 import { Player, Position } from '@/types';
@@ -31,6 +31,10 @@ const Builder: React.FC<BuilderProps> = ({ players: initialPlayers, onCreate }) 
     event.currentTarget.reset();
   };
 
+  const handleRemovePlayer = (playerName: string) => {
+    setPlayers(players => players.filter(player => player.name !== playerName));
+  };
+
   return (
     <section className='max-w-md'>
       <div className='flex justify-center w-full'>
@@ -39,7 +43,13 @@ const Builder: React.FC<BuilderProps> = ({ players: initialPlayers, onCreate }) 
         </Text>
       </div>
       <BuilderAddPlayer addPlayer={handleAddPlayer} />
-      {players.length > 0 && <BuilderForm onCreate={onCreate} players={players} />}
+      {players.length > 0 && (
+        <BuilderForm 
+          onCreate={onCreate} 
+          players={players} 
+          onRemovePlayer={handleRemovePlayer} // Pasamos la función
+        />
+      )}
     </section>
   );
 };
