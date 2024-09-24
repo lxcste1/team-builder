@@ -9,6 +9,7 @@ export const CreateTeams = (players: Player[]): { team1: Player[]; team2: Player
     DEF: [] as Player[],
     VOL: [] as Player[],
     DEL: [] as Player[],
+    Default: [] as Player[],
   };
 
   players.forEach(player => {
@@ -36,7 +37,7 @@ export const CreateTeams = (players: Player[]): { team1: Player[]; team2: Player
   }
 
   return { team1, team2 };
-  
+
   };
 
   export default CreateTeams;
