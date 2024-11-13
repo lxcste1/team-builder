@@ -119,43 +119,46 @@ export default function TeamBuilder() {
                 </div>
                 <div className="space-y-3">
                   {players.map((player, index) => (
-                    <div key={index} className="flex items-center gap-2 bg-[#1a1a1a] p-2 rounded-md">
-                      <span className="flex-1 font-medium text-sm text-[#f2f2f2] mx-1">{player.name}</span>
-                      <Select
-                        value={player.position}
-                        onValueChange={(value) => updatePlayer(index, 'position', value)}
-                      >
-                        <SelectTrigger className="w-[100px] bg-[#333] text-[#f2f2f2] border-[#444]">
-                          <SelectValue placeholder="POS" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-[#333] text-[#f2f2f2] border-[#444]">
-                          <SelectItem value="DEL">DEL</SelectItem>
-                          <SelectItem value="VOL">VOL</SelectItem>
-                          <SelectItem value="DEF">DEF</SelectItem>
-                          <SelectItem value="ARQ">ARQ</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <Select
-                        value={player.points.toString()}
-                        onValueChange={(value) => updatePlayer(index, 'points', value)}
-                      >
-                        <SelectTrigger className="w-[80px] bg-[#333] text-[#f2f2f2] border-[#444] rounded-md">
-                          <SelectValue placeholder="PTS" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-[#333] text-[#f2f2f2] border-[#444] rounded-md">
-                          {[1, 2, 3, 4, 5].map((n) => (
-                            <SelectItem key={n} value={n.toString()}>{n}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => removePlayer(index)}
-                        className="text-red-500 hover:text-red-700"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
+                    <div key={index} className="flex items-center justify-between gap-2 bg-[#1a1a1a] p-2 rounded-md">
+                      <span className="flex-1 font-medium text-sm text-[#f2f2f2] mx-1 max-w-20 truncate">{player.name}</span>
+                      <div className='flex justify-end gap-2'>
+                        <Select
+                          value={player.position}
+                          onValueChange={(value) => updatePlayer(index, 'position', value)}
+                        >
+                          <SelectTrigger className="w-[70px] bg-[#333] text-[#f2f2f2] border-[#444] text-xs rounded-md">
+                            <SelectValue placeholder="POS" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-[#333] text-[#f2f2f2] border-[#444]">
+                            <SelectItem value="DEL">DEL</SelectItem>
+                            <SelectItem value="VOL">VOL</SelectItem>
+                            <SelectItem value="DEF">DEF</SelectItem>
+                            <SelectItem value="ARQ">ARQ</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <Select
+                          value={player.points.toString()}
+                          onValueChange={(value) => updatePlayer(index, 'points', value)}
+                        >
+                          <SelectTrigger className="w-[50px] bg-[#333] text-[#f2f2f2] border-[#444] rounded-md text-xs">
+                            <SelectValue placeholder="PTS" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-[#333] text-[#f2f2f2] border-[#444] rounded-md">
+                            {[1, 2, 3, 4, 5].map((n) => (
+                              <SelectItem key={n} value={n.toString()}>{n}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => removePlayer(index)}
+                          className="text-red-500 hover:text-red-700"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>                        
+                      </div>
+
                     </div>
                   ))}
                 </div>
