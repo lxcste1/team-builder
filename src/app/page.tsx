@@ -1,6 +1,6 @@
 "use client"
 
-import Builder from "@/components/Builder/Builder";
+import TeamBuilder from "@/components/Builder/TeamBuilder";
 import { Player } from "@/types";
 
 export default function Home() {
@@ -10,8 +10,9 @@ export default function Home() {
   const handleCreateTeams = (teams: { team1?: Player[]; team2?: Player[] }) => {};
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-4 py-8">
-      <Builder players={players} onCreate={handleCreateTeams} />
+    <main>
+      {/* <Builder players={players} onCreate={handleCreateTeams} /> */}
+      <TeamBuilder />
     </main>
   );
 }
