@@ -5,7 +5,7 @@ interface StepperProps {
 }
 
 export const Stepper = ({ currentStep }: StepperProps) => (
-  <div className="flex justify-between mb-8">
+  <div className="flex justify-between mb-4">
     {[1, 2, 3].map((num) => (
       <div
         key={num}

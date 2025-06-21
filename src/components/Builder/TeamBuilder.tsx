@@ -26,15 +26,8 @@ export default function TeamBuilder() {
 
   return (
     <div className="min-h-screen bg-[#010101] p-4 text-slate-100">
-      <div className="max-w-md mx-auto space-y-4">
-        <div className="flex justify-center py-4">
-          <h1 className="text-2xl font-bold">
-            Team Builder <span>&#9917;</span>
-          </h1>
-        </div>
-
+      <div className="max-w-md mx-auto mt-[75px]">
         <Stepper currentStep={step} />
-
         <Card className="bg-[#0d0d0d] border-[#333] rounded-md text-slate-100">
           <CardContent className="p-6 space-y-4">
             {step === 1 && (
