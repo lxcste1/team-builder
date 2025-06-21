@@ -13,13 +13,7 @@ import {
 } from "@/components/ui/select"
 import { Users, Trophy, UserPlus, Trash2 } from 'lucide-react'
 
-import { Position } from '@/types'
-
-interface Player {
-  name: string
-  position: string
-  points: number
-}
+import { Position, Player } from '@/types'
 
 export default function TeamBuilder() {
   const [step, setStep] = useState(1)
@@ -30,14 +24,14 @@ export default function TeamBuilder() {
   const processPlayers = () => {
     const newPlayers = playerList.split('\n')
       .filter(name => name.trim())
-      .map(name => ({ name: name.trim(), position: '', points: 3 }))
+      .map(name => ({ name: name.trim(), position: '', score: 3 }))
     setPlayers(newPlayers)
     setStep(2);
   }
 
-  const updatePlayer = (index: number, field: 'position' | 'points', value: string) => {
+  const updatePlayer = (index: number, field: 'position' | 'score', value: string) => {
     const newPlayers = [...players]
-    newPlayers[index] = { ...newPlayers[index], [field]: field === 'points' ? Number(value) : value }
+    newPlayers[index] = { ...newPlayers[index], [field]: field === 'score' ? Number(value) : value }
     setPlayers(newPlayers)
   }
 
@@ -46,7 +40,7 @@ export default function TeamBuilder() {
   }
 
   const createTeams = () => {
-    const sortedPlayers = [...players].sort((a, b) => b.points - a.points)
+    const sortedPlayers = [...players].sort((a, b) => b.score - a.score)
     const team1: Player[] = []
     const team2: Player[] = []
     
@@ -63,7 +57,7 @@ export default function TeamBuilder() {
   }
 
   const calculateTotalScore = (team: Player[]): number => {
-    return team.reduce((total, player) => total + player.points, 0);
+    return team.reduce((total, player) => total + player.score, 0);
   };
 
   return (
@@ -137,8 +131,8 @@ export default function TeamBuilder() {
                           </SelectContent>
                         </Select>
                         <Select
-                          value={player.points.toString()}
-                          onValueChange={(value) => updatePlayer(index, 'points', value)}
+                          value={player.score.toString()}
+                          onValueChange={(value) => updatePlayer(index, 'score', value)}
                         >
                           <SelectTrigger className="w-[50px] bg-[#333] text-[#f2f2f2] border-[#444] rounded-md text-xs">
                             <SelectValue placeholder="PTS" />
