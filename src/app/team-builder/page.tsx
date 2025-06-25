@@ -1,8 +1,7 @@
-import TeamBuilder from "@/components/Builder/TeamBuilder";
+"use client";
 import React from "react";
+import TeamBuilder from "@/components/Builder/TeamBuilder";
 
-export const Builder = () => {
+export default function Builder() {
   return <TeamBuilder />;
-};
-
-export default Builder;
+}

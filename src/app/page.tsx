@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/Sections/HeroSection";
 import { StepSection } from "@/components/Sections/StepSection";
 import { TestimonialSection } from "@/components/Sections/TestimonialSection";
 
-export const Home = () => {
+export default function Home() {
   return (
     <main>
       <div className="min-h-screen bg-[#010101] text-white">
@@ -21,6 +21,4 @@ export const Home = () => {
       </div>
     </main>
   );
-};
-
-export default Home;
+}
