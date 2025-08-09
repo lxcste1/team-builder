@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SignUpCard } from "@/components/Login/SignUpCard";
 
-export const RegisterPage = () => {
+export default function RegisterPage() {
   return (
     <main className="min-h-screen bg-[#010101] text-white flex items-center justify-center px-4">
       <div className="w-full max-w-md my-[75px]">
@@ -25,6 +25,4 @@ export const RegisterPage = () => {
       </div>
     </main>
   );
-};
-
-export default RegisterPage;
+}
